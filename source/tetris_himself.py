@@ -1,10 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from pathlib import Path
 import time
 
 # Initialize WebDriver and open the Tetris game
 driver = webdriver.Firefox()  # Adjust if you're using a different browser
-driver.get("../tetris_game/index.html") 
+html_file = Path.cwd() / ".//tetris_game//index.html"
+driver.get(html_file.as_uri())
 
 # Start the game by sending an appropriate key press, if necessary
 # driver.find_element_by_id("startButton").click()  # Example
