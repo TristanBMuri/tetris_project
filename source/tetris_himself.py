@@ -20,9 +20,9 @@ time.sleep(5)  # Adjust based on your system performance
 def get_game_state():
     # Implement logic to capture and analyze the game state
     # This can be complex and might involve image recognition or DOM inspection
-    state = driver.get_screenshot_as_png()
+    blocks = driver.execute_script("return blocks")
 
-    return state
+    return blocks
 
 def calculate_best_move(game_state):
     # Implement your AI logic here
