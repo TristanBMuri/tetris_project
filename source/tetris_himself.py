@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from pathlib import Path
 import time
 
+
 # Initialize WebDriver and open the Tetris game
 driver = webdriver.Firefox()  # Adjust if you're using a different browser
 html_file = Path.cwd() / ".//tetris_game//index.html"
@@ -33,16 +34,29 @@ def calculate_best_move(game_state):
     return ["right", "rotate", "drop"]
 
 def make_move(move):
-    key_map = {"left": Keys.ARROW_LEFT, "right": Keys.ARROW_RIGHT, 
-               "rotate": Keys.UP, "drop": Keys.SPACE}
-    body = driver.find_element_by_tag_name("body")
-    for action in move:
-        body.send_keys(key_map[action])
-        time.sleep(0.1)  # Adjust timing based on game speed
+    
+    return "hello"
+
+# Event trigger check
+event_triggered = False
+timeout = 10  # seconds
+start_time = time.time()
+
+# Function to poll for the custom event
+def poll_for_custom_event():
+    while True:
+        # Check the value of the hidden input
+        value = driver.find_element(By.ID, "start").get_attribute("style.visibility")
+        if value:
+            print("Event detected:", value)
+            break  # Exit the loop if the event is detected
+        else:
+            time.sleep(1)  # Wait for a bit before polling again
 
 # Main game loop
 while True:
     state = get_game_state()
+    poll_for_custom_event()
     move = calculate_best_move(state)
     make_move(move)
     time.sleep(0.5)  # Adjust based on game speed and performance
