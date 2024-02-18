@@ -17,13 +17,12 @@ time.sleep(5)  # Adjust based on your system performance
 # Press space to start the game
 driver.find_element(By.TAG_NAME, "body").send_keys(Keys.SPACE)
 
-# Start the game by sending an appropriate key press, if necessary
-# driver.find_element_by_id("startButton").click()  # Example
-
 def get_game_state():
     # Implement logic to capture and analyze the game state
     # This can be complex and might involve image recognition or DOM inspection
-    pass
+    state = driver.get_screenshot_as_png()
+
+    return state
 
 def calculate_best_move(game_state):
     # Implement your AI logic here
