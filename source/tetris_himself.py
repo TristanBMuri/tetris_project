@@ -1,5 +1,8 @@
+# Selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
 from pathlib import Path
 import time
 
@@ -7,6 +10,12 @@ import time
 driver = webdriver.Firefox()  # Adjust if you're using a different browser
 html_file = Path.cwd() / ".//tetris_game//index.html"
 driver.get(html_file.as_uri())
+
+# Wait for the game to load
+time.sleep(5)  # Adjust based on your system performance
+
+# Press space to start the game
+driver.find_element(By.TAG_NAME, "body").send_keys(Keys.SPACE)
 
 # Start the game by sending an appropriate key press, if necessary
 # driver.find_element_by_id("startButton").click()  # Example
