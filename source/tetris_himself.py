@@ -3,8 +3,8 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 # Initialize WebDriver and open the Tetris game
-driver = webdriver.Chrome()  # Adjust if you're using a different browser
-driver.get("http://your-tetris-game-url.com")
+driver = webdriver.Firefox()  # Adjust if you're using a different browser
+driver.get("../tetris_game/index.html") 
 
 # Start the game by sending an appropriate key press, if necessary
 # driver.find_element_by_id("startButton").click()  # Example
@@ -16,7 +16,7 @@ def get_game_state():
 
 def calculate_best_move(game_state):
     # Implement your AI logic here
-    
+
 
     # Return the sequence of moves and rotations
 
